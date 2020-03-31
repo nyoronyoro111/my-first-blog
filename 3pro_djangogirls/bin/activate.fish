@@ -52,7 +52,7 @@ if test -z "$VIRTUAL_ENV_DISABLE_PROMPT"
         set -l old_status $status
 
         # Prompt override?
-        if test -n "(3pro_djangogirls) "            
+        if test -n "(3pro_djangogirls) "
             printf "%s%s" "(3pro_djangogirls) " (set_color normal)
         else
             # ...Otherwise, prepend env
