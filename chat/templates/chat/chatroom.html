@@ -1,0 +1,32 @@
+{% extends 'chat/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/chatroom.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class ="messageform">
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-outline-dark">Send</button>
+        </form>
+    </div>
+    <div class="messages">
+        {% for message in messages %}
+        <div class="message">
+            <div class="number">
+                {{ forloop.revcounter }}
+            </div>
+            <div class="text">
+                {{ message.text }}
+            </div>
+            <div class="date">
+                {{ message.published_date }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+{% endblock %}

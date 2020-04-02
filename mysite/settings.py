@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'chat',
+    'accounts.apps.AccountsConfig', # [追加]
 ]
 
 MIDDLEWARE = [
@@ -114,9 +116,16 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'chat:login'  # ログインするページ。デフォルトにするなら"/admin/login/"等も
+LOGIN_REDIRECT_URL = 'chat:chatroom_list'  
+# ログインページに直接飛んだとき、ログイン完了後のリダイレクト先、
+# これ書いておかないと/profileという存在しないページにリダイレクトされて404エラーが出ます
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR,"static"),
+)

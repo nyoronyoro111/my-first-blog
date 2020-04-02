@@ -1,0 +1,25 @@
+{% extends "chat/base.html" %}
+
+
+{% block content %}
+<!-- 左側、ログインエリア -->
+
+<div class="col-lg-8 login_form">
+    <h1 style="color: #1d4c95;">administrator login</h1>
+    <div class="card-body">
+        <form action="{% url 'accounts:login' %}" method="POST">
+        {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                {{ field }}
+                {{ field.errors }}
+                <hr>
+            {% endfor %}
+            <button type="submit" class="btn btn-outline-dark btn-md" >Login</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+</div>
+
+<!-- 左側、ログインエリアおわり -->
+{% endblock %}

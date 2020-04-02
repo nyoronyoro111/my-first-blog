@@ -1,0 +1,20 @@
+{% extends 'chat/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/chatroom_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1>Chat room list.</h1>
+    {% for chatroom in chatrooms %}
+        <div class="chatroom">
+            <div class="date">
+                {{ chatroom.published_date }}
+            </div>
+            <div class ="title">
+                <h3><a href="{% url 'chat:chatroom' id=chatroom.pk %}">{{ chatroom.title }}</a></h3>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
